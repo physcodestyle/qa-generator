@@ -1,0 +1,30 @@
+{% macro essay(filename, title, question, commentary, feedback, grade, penalty) %}
+<!-- question: {{ filename }}  -->
+  <question type="essay">
+    <name>
+      <text>{{ title }}</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[{{ question | safe }}]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[{{ feedback.general | safe }}]]></text>
+    </generalfeedback>
+    <defaultgrade>{{ grade }}</defaultgrade>
+    <penalty>{{ penalty }}</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>15</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <filetypeslist></filetypeslist>
+    <graderinfo format="html">
+      <text><![CDATA[{{ commentary | safe }}]]></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text><![CDATA[{{ response | safe }}]]></text>
+    </responsetemplate>
+  </question>
+{% endmacro %}

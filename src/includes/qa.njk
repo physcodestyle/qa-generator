@@ -1,0 +1,10 @@
+{% from "templates/essay.njk" import essay %}
+{% from "templates/multichoice.njk" import multichoice %}
+
+{% macro questionWithAnswers(qa) %}
+  {% if qa.data.tags == "essay" %}
+    {{ essay(qa.filename, qa.title, qa.templateContent, qa.commentary, qa.feedback, qa.grade, qa.penalty) }}
+  {% elif qa.data.tags == "multichoice" %}
+    {{ multichoice(qa.filename, qa.title, qa.templateContent, qa.answers, qa.feedback, qa.grade, qa.penalty, qa.withSingleAnswer, qa.withShuffling) }}
+  {% endif %}
+{% endmacro %}
