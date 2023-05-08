@@ -100,6 +100,10 @@ module.exports = (config) => {
     }, {})
   })
 
+  config.addTransform('xml-clean', (content) => {
+    return content.replace(/([ ]*|)\n/gi, '\n').replace(/\n\n/gi, '\n').replace(/\n\n/gi, '\n')
+  })
+
   return {
     dir: {
       input: 'src',

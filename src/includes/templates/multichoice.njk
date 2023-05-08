@@ -1,40 +1,40 @@
 {% macro multichoice(filename, title, question, answers, feedback, grade, penalty, withSingleAnswer, withShuffling) %}
-<!-- question: {{ filename }}  -->
-<question type="multichoice">
-  <name>
-    <text>{{ title }}</text>
-  </name>
-  <questiontext format="html">
-    <text><![CDATA[{{ question | safe }}]]></text>
-  </questiontext>
-  <generalfeedback format="html">
-    <text><![CDATA[{{ feedback.general | safe }}]]></text>
-  </generalfeedback>
-  <defaultgrade>{{ grade }}</defaultgrade>
-  <penalty>{{ penalty }}</penalty>
-  <hidden>0</hidden>
-  <idnumber></idnumber>
-  <single>{{ withSingleAnswer }}</single>
-  <shuffleanswers>{{ withShuffling }}</shuffleanswers>
-  <answernumbering>none</answernumbering>
-  <showstandardinstruction>0</showstandardinstruction>
-  <correctfeedback format="html">
-    <text><![CDATA[{{ feedback.correct | safe }}]]></text>
-  </correctfeedback>
-  <partiallycorrectfeedback format="html">
-    <text><![CDATA[{{ feedback.partiallycorrect | safe }}]]></text>
-  </partiallycorrectfeedback>
-  <incorrectfeedback format="html">
-    <text><![CDATA[{{ feedback.incorrect | safe }}]]></text>
-  </incorrectfeedback>
-  <shownumcorrect/>
-  {% for answer in answers %}
-  <answer fraction="{{ answer.fraction }}" format="html">
-    <text><![CDATA[{{ answer.text | safe }}]]></text>
-    <feedback format="html">
-      <text>{{ answer.feedback | safe }}</text>
-    </feedback>
-  </answer>
-  {% endfor %}
-</question>
+  <!-- question: {{ filename }}  -->
+  <question type="multichoice">
+    <name>
+      <text>{{ title }}</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[{{ question | safe }}]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[{{ feedback.general | safe }}]]></text>
+    </generalfeedback>
+    <defaultgrade>{{ grade }}</defaultgrade>
+    <penalty>{{ penalty }}</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>{{ withSingleAnswer }}</single>
+    <shuffleanswers>{{ withShuffling }}</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>0</showstandardinstruction>
+    <correctfeedback format="html">
+      <text><![CDATA[{{ feedback.correct | safe }}]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[{{ feedback.partiallycorrect | safe }}]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[{{ feedback.incorrect | safe }}]]></text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    {% for answer in answers %}
+    <answer fraction="{{ answer.fraction }}" format="html">
+      <text><![CDATA[{{ answer.text | safe }}]]></text>
+      <feedback format="html">
+        <text>{{ answer.feedback | safe }}</text>
+      </feedback>
+    </answer>
+    {% endfor %}
+  </question>
 {% endmacro %}
