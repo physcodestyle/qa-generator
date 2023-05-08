@@ -26,5 +26,10 @@ module.exports = {
       }
       return []
     },
+
+    title: function (data) {
+      const { qas } = data
+      return `Компетенция «${qas.split('/')[1]}»`
+    },
   },
 }

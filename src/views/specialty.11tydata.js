@@ -25,5 +25,10 @@ module.exports = {
       }
       return result
     },
+
+    title: function (data) {
+      const { qas } = data
+      return `Направление подготовки «${qas.split('/')[0]}»`
+    },
   },
 }

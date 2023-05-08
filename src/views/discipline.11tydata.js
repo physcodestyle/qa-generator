@@ -23,5 +23,10 @@ module.exports = {
       }
       return []
     },
+
+    title: function (data) {
+      const { qas } = data
+      return `Дисциплина «${qas.split('/')[2]}»`
+    },
   },
 }
