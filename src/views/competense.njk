@@ -1,0 +1,5 @@
+{% from "qa.njk" import questionWithAnswers %}
+
+{% for qa in qaList %}
+  {{ questionWithAnswers(qa) }}
+{% endfor %}
