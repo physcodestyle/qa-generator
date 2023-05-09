@@ -23,7 +23,10 @@ module.exports = {
           })
         })
       }
-      return result
+      return result.map((q) => {
+        q['withSingleAnswer'] = Array.isArray(q.data.answers) ? q.data.answers.filter((a) => a.fraction === 100).length > 0 : false
+        return q
+      })
     },
 
     title: function (data) {

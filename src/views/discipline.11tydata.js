@@ -18,7 +18,10 @@ module.exports = {
         const qaAsTreeSpecialty = qaAsTree[parts[0]]
         if (Object.keys(qaAsTreeSpecialty).includes(parts[1])) {
           const qaAsTreeSpecialtyCompetence = qaAsTreeSpecialty[parts[1]]
-          return qaAsTreeSpecialtyCompetence[parts[2]]
+          return qaAsTreeSpecialtyCompetence[parts[2]].map((q) => {
+            q['withSingleAnswer'] = Array.isArray(q.data.answers) ? q.data.answers.filter((a) => a.fraction === 100).length > 0 : false
+            return q
+          })
         }
       }
       return []

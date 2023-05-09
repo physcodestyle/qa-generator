@@ -18,10 +18,15 @@ module.exports = {
         const qaAsTreeSpecialty = qaAsTree[parts[0]]
         if (Object.keys(qaAsTreeSpecialty).includes(parts[1])) {
           const qaAsTreeSpecialtyKeys = Object.keys(qaAsTreeSpecialty[parts[1]])
-          return qaAsTreeSpecialtyKeys.reduce((map, key) => [
+          return qaAsTreeSpecialtyKeys
+            .reduce((map, key) => [
               ...map,
               ...qaAsTreeSpecialty[parts[1]][key]
             ], [])
+            .map((q) => {
+              q['withSingleAnswer'] = Array.isArray(q.data.answers) ? q.data.answers.filter((a) => a.fraction === 100).length > 0 : false
+              return q
+            })
         }
       }
       return []

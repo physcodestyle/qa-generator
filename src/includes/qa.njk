@@ -3,8 +3,8 @@
 
 {% macro questionWithAnswers(qa) %}
   {% if qa.data.tags == "essay" %}
-    {{ essay(qa.filename, qa.title, qa.templateContent, qa.commentary, qa.feedback, qa.grade, qa.penalty) }}
+    {{ essay(qa.filename, qa.data.title, qa.templateContent, qa.data.commentary, qa.data.feedback, qa.data.grade, qa.data.penalty) }}
   {% elif qa.data.tags == "multichoice" %}
-    {{ multichoice(qa.filename, qa.title, qa.templateContent, qa.answers, qa.feedback, qa.grade, qa.penalty, qa.withSingleAnswer, qa.withShuffling) }}
+    {{ multichoice(qa.filename, qa.data.title, qa.templateContent, qa.data.answers, qa.data.feedback, qa.data.grade, qa.data.penalty, qa.withSingleAnswer, qa.data.withShuffling) }}
   {% endif %}
 {% endmacro %}
