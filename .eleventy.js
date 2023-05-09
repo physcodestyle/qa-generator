@@ -1,5 +1,5 @@
 function getAllQuestionWithAnswers(collectionAPI) {
-  return collectionAPI.getFilteredByGlob(`src/!(views)**/**/**/*.md`)
+  return collectionAPI.getFilteredByGlob(`src/!(views|data|includes|layouts)**/**/**/*.md`)
 }
 
 function qasAsTree(collectionApi) {
@@ -8,15 +8,15 @@ function qasAsTree(collectionApi) {
     const specialty = qa.filePathStem.split('/')[1]
     const competence = qa.filePathStem.split('/')[2]
     const discipline = qa.filePathStem.split('/')[3]
-
+    
     if (!Object.keys(map).includes(specialty)) {
       map[specialty] = {}
-      if (!Object.keys(map[specialty]).includes(competence)) {
-        map[specialty][competence] = {}
-        if (!Object.keys(map[specialty][competence]).includes(discipline)) {
-          map[specialty][competence][discipline] = []
-        }
-      }
+    }
+    if (!Object.keys(map[specialty]).includes(competence)) {
+      map[specialty][competence] = {}
+    }
+    if (!Object.keys(map[specialty][competence]).includes(discipline)) {
+      map[specialty][competence][discipline] = []
     }
     map[specialty][competence][discipline].push(qa)
 
